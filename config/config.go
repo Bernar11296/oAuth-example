@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -12,15 +13,17 @@ import (
 var GoogleOauthConfig *oauth2.Config
 
 func Init() {
+	fmt.Println(1)
 	if err := godotenv.Load("./.env"); err != nil {
 		log.Print("No .env file found")
 	}
 	GoogleOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:8080/auth/google/callback",
 		ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
-		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
+		ClientSecret: os.Getenv("GOOGLE_SECRET"),
+		RedirectURL:  os.Getenv("REDIRECT_URL"),
 		Scopes: []string{
 			"https://www.googleapis.com/auth/userinfo.email",
+			"https://www.googleapis.com/auth/userinfo.profile",
 		},
 		Endpoint: google.Endpoint,
 	}
