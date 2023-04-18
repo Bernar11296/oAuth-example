@@ -4,12 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Bernar11296/oAuth-example/config"
 	"github.com/Bernar11296/oAuth-example/handlers"
 )
 
 func main() {
-	config.Init()
 	server := &http.Server{
 		Addr:    ":8080",
 		Handler: handlers.New(),

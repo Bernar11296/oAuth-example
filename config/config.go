@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -14,8 +13,7 @@ import (
 var GoogleOauthConfig *oauth2.Config
 var GithubOauthConfig *oauth2.Config
 
-func Init() {
-	fmt.Println(1)
+func init() {
 	if err := godotenv.Load("./.env"); err != nil {
 		log.Print("No .env file found")
 	}
