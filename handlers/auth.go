@@ -8,5 +8,7 @@ func New() http.Handler {
 
 	mux.HandleFunc("/auth/google/login", oauthGoogleLogin)
 	mux.HandleFunc("/auth/google/callback", oauthGoogleCallback)
+	mux.HandleFunc("/auth/github/login", oauthGithubLogin)
+	mux.HandleFunc("/auth/github/callback", oauthGithubCallback)
 	return mux
 }
